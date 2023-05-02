@@ -34,8 +34,8 @@
   
   .control input:focus {
     outline: none;
-    border-color: #4f005f;
-    background: #f6dbfc;
+    border-color:rgb(3, 3, 87);
+    background:rgb(125, 125, 225);
   }
   
   .control.invalid input {
@@ -45,6 +45,7 @@
   
   .actions {
     text-align: center;
+    float: inline-end;
   }
   
   @media (min-width: 768px) {

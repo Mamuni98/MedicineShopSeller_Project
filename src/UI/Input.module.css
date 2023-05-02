@@ -8,7 +8,7 @@
   .input label {
     font-weight: bold;
     flex: 1;
-    color: #464646;
+    color: #010101;
     margin-bottom: 0.5rem;
   }
   .input label,
@@ -21,13 +21,13 @@
     font: inherit;
     padding: 0.35rem 0.35rem;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #6e6c6c;
   }
   
   .input input:focus {
     outline: none;
-    border-color: #4f005f;
-    background: #f6dbfc;
+    border-color: rgb(22, 22, 82);
+    background: #c2daf3;
   }
   .input.invalid input {
     border-color: red;
