@@ -25,3 +25,7 @@
     color: rgb(13, 13, 116);
     font-size: 1.25rem;
   }
+  .actions {
+    text-align: center;
+    float: inline-end;
+  }

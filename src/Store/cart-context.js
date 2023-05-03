@@ -5,7 +5,8 @@ const CartContext = React.createContext({
   totalAmount: 0,
   addItem: (item) => {},
   removeItem: (id) => {},
-  increaseAmount: (item) => {}
+  increaseAmount: (item) => {},
+  order: () => {}
 });
 
 export const CartProvider = (props) => {
@@ -22,6 +23,7 @@ export const CartProvider = (props) => {
       const updatedItem = {
         ...existingCartItem,
         amount: existingCartItem.amount + item.amount,
+  
       };
       updatedItems = [...cartItems];
       updatedItems[existingItemIndex] = updatedItem;

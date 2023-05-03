@@ -1,11 +1,8 @@
-import { useContext, useEffect} from "react";
+import { useContext } from "react";
 import classes from "./CartItem.module.css";
 import CartContext from "../../Store/cart-context";
-import ListContext from "../../Store/list-context";
-
 const CartItem = (props) => {
   const cartCnxt = useContext(CartContext);
-  const listCntxt = useContext(ListContext);
 
   const price = `Rs.${props.price.toFixed(2)}`;
   const removeItemHandler = (event) => {
@@ -14,12 +11,8 @@ const CartItem = (props) => {
   };
   const increaseAmountHandler = (event) => {
     event.preventDefault();
-    listCntxt.cartUpdateAmount(props.id);
-    console.log(listCntxt.amount);
-    if (listCntxt.amount > 0) {
-      cartCnxt.increaseAmount(props);
-      listCntxt.addingToCart(props.id);
-    }
+
+    cartCnxt.increaseAmount(props);
   };
 
   return (

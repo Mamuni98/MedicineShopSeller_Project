@@ -71,7 +71,7 @@ const AddMedicine = (props) => {
           }}
         />
         <div className={classes.action}>
-          <Button type="submit">Add Medicine</Button>
+          <Button type="submit" className={classes.btn}>Add Medicine</Button>
         </div>
       </form>
     </Card>

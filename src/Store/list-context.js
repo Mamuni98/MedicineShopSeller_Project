@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 const ListContext = React.createContext({
   items: [],
-  amount: null,
-  cartUpdateAmount: (id) => {},
   onAddMedicine: (list) => {},
   addingToCart: (amount) => {},
 });
 
 export const ListProvider = (props) => {
   const [itemLists, setItemLists] = useState([]);
-  const [itemAmount, setItemAmount] = useState();
 
   const addMedicineHandler = (list) => {
     setItemLists((prevlist) => {
@@ -17,9 +14,9 @@ export const ListProvider = (props) => {
     });
   };
 
-  const manageAmountHandler = (id, amount) => {
+  const manageAmountHandler = (item) => {
     const existingItemIndex = itemLists.findIndex(
-      (prevItem) => prevItem.id === id
+      (prevItem) => prevItem.id === item.id
     );
     const existingListItem = itemLists[existingItemIndex];
     let updatedItems;
@@ -31,24 +28,21 @@ export const ListProvider = (props) => {
     updatedItems[existingItemIndex] = updatedItem;
 
     setItemLists(updatedItems);
-    setItemAmount((prev) => {
-      return updatedItem.amount});
   };
-  const updateAmountHandler = (id) => {
-    const existingItemIndex = itemLists.findIndex(
-      (prevItem) => prevItem.id === id
-    );
-    const existingListItem = itemLists[existingItemIndex];
-    setItemAmount(existingListItem.amount);
-  }
+  // const updateAmountHandler = (id) => {
+  //   const existingItemIndex = itemLists.findIndex(
+  //     (prevItem) => prevItem.id === id
+  //   );
+  //   const existingListItem = itemLists[existingItemIndex];
+  //   setItemAmount(existingListItem.amount);
+  // cartUpdateAmount: updateAmountHandler,
+  // }
   return (
     <ListContext.Provider
       value={{
         items: itemLists,
-        amount: itemAmount,
-        cartUpdateAmount: updateAmountHandler,
         onAddMedicine: addMedicineHandler,
-        addingToCart: manageAmountHandler
+        addingToCart: manageAmountHandler,
       }}
     >
       {props.children}

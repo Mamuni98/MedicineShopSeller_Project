@@ -23,9 +23,11 @@ const Medicine = (props) => {
       amount: Number(1),
       price: Number(props.price),
     };
+    console.log(props.id);
+    console.log(items.id);
     if (isValid) {
       cartCntxt.addItem(items);
-      listCntxt.addingToCart(props.id);
+      listCntxt.addingToCart(props);
     }
   };
 
@@ -43,7 +45,13 @@ const Medicine = (props) => {
           <div className={classes.amount}>
             {props.amount > 0 ? props.amount : outOfStock}
           </div>
-          {isValid && <Button onClick={addItemToCartHandler}>+Add</Button>}
+          <div className={classes.action}>
+            {isValid && (
+              <Button className={classes.btn} onClick={addItemToCartHandler}>
+                +Add
+              </Button>
+            )}
+          </div>
         </div>
       </li>
     </Card>
