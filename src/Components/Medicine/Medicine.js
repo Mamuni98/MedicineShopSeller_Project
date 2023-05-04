@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import classes from "./Medicine.module.css";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
@@ -7,14 +7,8 @@ import ListContext from "../../Store/list-context";
 const Medicine = (props) => {
   const cartCntxt = useContext(CartContext);
   const listCntxt = useContext(ListContext);
-  const [isValid, setIsValid] = useState(false);
-  useEffect(() => {
-    if (props.amount === 0) {
-      setIsValid(false);
-    } else {
-      setIsValid(true);
-    }
-  }, [props.amount, isValid]);
+  //console.log(props.amount);
+  const hasAmount = props.amount > 0;
   const addItemToCartHandler = (event) => {
     event.preventDefault();
     const items = {
@@ -23,14 +17,9 @@ const Medicine = (props) => {
       amount: Number(1),
       price: Number(props.price),
     };
-    console.log(props.id);
-    console.log(items.id);
-    if (isValid) {
-      cartCntxt.addItem(items);
-      listCntxt.addingToCart(props);
-    }
+    cartCntxt.addItem(items);
+    listCntxt.addingToCart(props);
   };
-
   const outOfStock = <h3 style={{ color: "red" }}>Out of Stock</h3>;
 
   return (
@@ -46,7 +35,7 @@ const Medicine = (props) => {
             {props.amount > 0 ? props.amount : outOfStock}
           </div>
           <div className={classes.action}>
-            {isValid && (
+            {hasAmount && (
               <Button className={classes.btn} onClick={addItemToCartHandler}>
                 +Add
               </Button>

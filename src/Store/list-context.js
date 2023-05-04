@@ -14,7 +14,7 @@ export const ListProvider = (props) => {
     });
   };
 
-  const manageAmountHandler = (item) => {
+  const manageCartHandler = (item) => {
     const existingItemIndex = itemLists.findIndex(
       (prevItem) => prevItem.id === item.id
     );
@@ -29,20 +29,13 @@ export const ListProvider = (props) => {
 
     setItemLists(updatedItems);
   };
-  // const updateAmountHandler = (id) => {
-  //   const existingItemIndex = itemLists.findIndex(
-  //     (prevItem) => prevItem.id === id
-  //   );
-  //   const existingListItem = itemLists[existingItemIndex];
-  //   setItemAmount(existingListItem.amount);
-  // cartUpdateAmount: updateAmountHandler,
-  // }
+
   return (
     <ListContext.Provider
       value={{
         items: itemLists,
         onAddMedicine: addMedicineHandler,
-        addingToCart: manageAmountHandler,
+        addingToCart: manageCartHandler,
       }}
     >
       {props.children}
