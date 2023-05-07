@@ -17,8 +17,10 @@ const Medicine = (props) => {
       amount: Number(1),
       price: Number(props.price),
     };
-    cartCntxt.addItem(items);
-    listCntxt.addingToCart(props);
+    if (hasAmount) {
+      cartCntxt.addItem(items);
+      listCntxt.addingToCart(props);
+    }
   };
   const outOfStock = <h3 style={{ color: "red" }}>Out of Stock</h3>;
 
@@ -35,10 +37,10 @@ const Medicine = (props) => {
             {props.amount > 0 ? props.amount : outOfStock}
           </div>
           <div className={classes.action}>
-            {hasAmount && (
-              <Button className={classes.btn} onClick={addItemToCartHandler}>
-                +Add
-              </Button>
+            {hasAmount ? (
+              <Button onClick={addItemToCartHandler}>+Add</Button>
+            ) : (
+              <Button disabled>+Add</Button>
             )}
           </div>
         </div>

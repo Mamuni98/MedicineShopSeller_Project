@@ -20,6 +20,7 @@
 }
 
 button:disabled,
+button[disabled],
 button:focus:disabled,
 button:hover:disabled,
 button:active:disabled {
